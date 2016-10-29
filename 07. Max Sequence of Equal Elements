@@ -1,0 +1,38 @@
+import java.util.List;
+import java.util.Scanner;
+
+public class MaxSequenceOfEqualElements {
+    public  static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        String line = scan.nextLine();
+        String[] arr = line.split("\\s+");
+        int[] arr2 = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr2[i] = Integer.parseInt(arr[i]);
+        }
+        int start = 0;
+        int count = 0;
+        int max = 0;
+        for (int i = 0; i < arr2.length-1; i++)
+        {
+            if (arr2[i]==arr2[i+1])
+            {
+                count++;
+                if (count > max)
+                {
+                    start = i - count;
+                    max = count;
+                }
+            }
+            else
+            {
+                count = 0;
+            }
+        }
+        for (int i = start+1 ; i <= start+max+1; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+    }
+}
