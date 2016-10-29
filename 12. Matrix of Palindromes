@@ -1,0 +1,32 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	    Scanner scan = new Scanner(System.in);
+        String line = scan.nextLine();
+        String[] arr = line.split("\\s+");
+        int[] arr2 = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr2[i] = Integer.parseInt(arr[i]);
+            String[][] matrix = new String[arr2[0]][arr2[1]];
+            char firstAndLast = 'a';
+            char middle = 'a';
+            for (int row = 0; row < arr2[0]; row++)
+            {
+                for (int col = 0; col < arr2[1]; col++)
+                {
+                    String matrixDetail = new StringBuilder().append(firstAndLast).append(middle).append(firstAndLast).toString();
+                    matrix[row][col] = matrixDetail;
+                    middle++;
+                   System.out.print(matrix[row][col]+" ");
+                }
+                firstAndLast++;
+                middle = firstAndLast;
+                System.out.println();
+            }
+        }
+    }
+}
