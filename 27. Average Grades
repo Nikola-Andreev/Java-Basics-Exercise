@@ -1,0 +1,95 @@
+package com.company;
+
+import java.text.DecimalFormat;
+import java.text.MessageFormat;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static jdk.nashorn.internal.objects.NativeFunction.function;
+
+class Student {
+    private String name;
+    private double[] grades;
+    private double average;
+
+    public Student(String name, double[] grades, double average) {
+        this.name = name;
+        this.grades = grades;
+        double sum = 0;
+        this.average = average;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double[] getGrades() {
+        return grades;
+    }
+
+    public void setGrades(double[] grades) {
+        this.grades = grades;
+    }
+
+    public double getAverage() {
+        return average;
+    }
+
+    public void setR(double average) {
+        this.average = average;
+    }
+
+}
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scan = new Scanner(System.in);
+            int studentsNumber = scan.nextInt();
+            scan.nextLine();
+            Student[] result = new Student[studentsNumber];
+            for (int i = 0; i < studentsNumber; i++) {
+                String[] inputStudent = scan.nextLine().split(" ");
+                String name = inputStudent[0];
+                double[] grades = new double[inputStudent.length-1];
+                for (int j = 0; j < inputStudent.length -1; j++) {
+                    grades[j] = Double.parseDouble(inputStudent[j+1]);
+                }
+                double sum = 0;
+                for (int s = 0; s < grades.length; s++) {
+                    sum += grades[s];
+                }
+                double average = sum / grades.length;
+                Student student = new Student(name,grades,average);
+                result[i]=student;
+            }
+            Arrays.sort(result, new Comparator<Student>() {
+
+                public int compare(Student o1, Student o2) {
+
+                    String x1 = ((Student) o1).getName();
+                    String x2 = ((Student) o2).getName();
+                    int sComp = x1.compareTo(x2);
+
+                    if (sComp != 0) {
+                        return sComp;
+                    } else {
+                        double x3 = ((Student) o1).getAverage();
+                        double x4 = ((Student) o2).getAverage();
+                        return Double.compare(x4,x3);
+                    }
+                }
+            });
+
+            for ( Student item : result ) {
+                String name = item.getName();
+                double average = item.getAverage();
+                DecimalFormat df = new DecimalFormat("#.00");
+                if (item.getAverage()>=5.00)
+                    System.out.println(MessageFormat.format("{0} -> {1}", name, df.format(average)));
+            }
+        }
+    }
