@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class IndexOfLetters {
+    public static void main(String[] args) {
+        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        Scanner scan = new Scanner(System.in);
+        String line = scan.nextLine();
+        char[] arr = line.toCharArray();
+        for (char a : arr) {
+            int position = java.util.Arrays.binarySearch(alphabet, a);
+            System.out.printf("%c -> %d", a ,position );
+            System.out.println();
+        }
+    }
+}
