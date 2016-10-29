@@ -1,0 +1,82 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class CompareCharArrays {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        char[] arr1 = scan.nextLine().toCharArray();
+        char[] arr2 = scan.nextLine().toCharArray();
+        boolean flag = false;
+        if (arr1.length < arr2.length){
+            for (int i = 0; i < arr1.length; i++) {
+                if ( arr1[i] != ' ')
+                System.out.print(arr1[i]);
+            }
+            System.out.println();
+            for (int i = 0; i < arr2.length; i++) {
+                if ( arr2[i] != ' ')
+                System.out.print(arr2[i]);
+            }
+            System.out.println();
+            flag = true;
+        }
+        else if (arr1.length > arr2.length){
+            for (int i = 0; i < arr2.length; i++) {
+                if ( arr2[i] != ' ')
+                System.out.print(arr2[i]);
+            }
+            System.out.println();
+            for (int i = 0; i < arr1.length; i++) {
+                if ( arr1[i] != ' ')
+                System.out.print(arr1[i]);
+            }
+            System.out.println();
+            flag = true;
+        }
+        else if (arr1.length == arr2.length){
+            for (int i = 0; i <arr1.length ; i++) {
+                if (arr1[i] > arr2[i]) {
+                    for (int a = 0; a < arr2.length; a++) {
+                        if ( arr2[a] != ' ')
+                        System.out.print(arr2[a]);
+                    }
+                    System.out.println();
+                    for (int b = 0; b < arr1.length; b++) {
+                        if ( arr1[b] != ' ')
+                        System.out.print(arr1[b]);
+                    }
+                    System.out.println();
+                    flag = true;
+                    break;
+                }
+                if (arr1[i] < arr2[i]) {
+                    for (int c = 0; c < arr1.length; c++) {
+                        if ( arr1[c] != ' ')
+                        System.out.print(arr1[c]);
+                    }
+                    System.out.println();
+                    for (int d = 0;  d < arr2.length; d++) {
+                        if ( arr2[d] != ' ')
+                        System.out.print(arr2[d]);
+                    }
+                    System.out.println();
+                    flag = true;
+                    break;
+                }
+            }
+        }
+        if (!flag){
+            for (int i = 0; i < arr1.length; i++) {
+                if ( arr1[i] != ' ')
+                System.out.print(arr1[i]);
+            }
+            System.out.println();
+            for (int i = 0; i < arr2.length; i++) {
+                if ( arr2[i] != ' ')
+                System.out.print(arr2[i]);
+            }
+            System.out.println();
+        }
+    }
+}
